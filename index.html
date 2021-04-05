@@ -1,57 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/453205446a.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js"defer></script>
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/453205446a.js" crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/main.js" defer></script>
+	<title>Document</title>
 </head>
+
 <body>
-    <section class="main">
-        <div class="main-box">
-            <h1 class="main-title">오늘 뭐했지?</h1>
-            <p class="main-description">찰나의 순간을 기록하고 싶은<span>모든 이들을 위하여</span></p>
-            <input class="main-input" type="text"placeholder="찾고싶은 날짜나 제목을 입력하세요">
-            <button class="main-submit">등록</button>
-        </div>
-        <div class="items-box">
-           <ul class="main-items">
-                <li class="li-item li-item1">
-                    <img src="img/메인.png" alt="item이미지" class="img">
-                    <span class="far fa-times-circle"></span>
-                    <span class="li-date">Date : 04.01</span>
-                    <span class="li-title">이히리어차차차이히리 오예오예 어차차 머리가 아푸다 흑흑</span>
-                </li>
-                <li class="li-item li-item2">
-                    <img src="img/메인.png" alt="item이미지" class="img">
-                    <span class="far fa-times-circle"></span>
-                    <span class="li-date">Date : 03.31</span>
-                    <span class="li-title">하루종일 공부한날.. 머리가 아푸다 흑흑</span>
-                </li>
-                <li class="li-item li-item3">
-                    <img src="img/메인.png" alt="item이미지" class="img">
-                    <span class="far fa-times-circle"></span>
-                    <span class="li-date">Date : 03.31</span>
-                    <span class="li-title">하루종일 공부한날.. 머리가 아푸다 흑흑</span>
-                </li>
-                <li class="li-item li-item3">
-                    <img src="img/메인.png" alt="item이미지" class="img">
-                    <span class="far fa-times-circle"></span>
-                    <span class="li-date">Date : 03.31</span>
-                    <span class="li-title">하루종일 공부한날.. 머리가 아푸다 흑흑</span>
-                </li>
-         
-            </ul>
-        </div>
-    </section>
-    <section class="prc ">
-        <button class="prc-btn">back</button>
-    </section>
+	<!-- 등록 모달창 -->
+	<div class="modal-upload-layer">
+		<article class="modal-upload">
+			<h2 class="upload-title a11y-hidden">등록 모달창</h2>
+			<ul class="upload-content">
+				<li class="upload-content-title">
+					<label for="up-title" class="a11y-hidden">제목</label>
+					<input id="up-title" type="text" placeholder="제목">
+				</li>
+				<li class="upload-content-detail">
+					<textarea name="upload-textarea" id="up-textarea" cols="30" rows="10" placeholder="내용"></textarea>
+				</li>
+			</ul>
+			<button utton class="upload-add-button">등록</button>
+			<span class="fas fa-times-circle upload-close"></span>
+		</article>
+	</div>
+	<!-- 세부 모달창 -->
+	<div class="modal-detail-layer">
+		<article class="modal-detail">
+			<h2 class="detail-title a11y-hidden">세부내용 모달창</h2>
+			<ul class="detail-content">
+				<li class="detail-content-title">
+					<label for="de-title" class="a11y-hidden">제목</label>
+					<input id="de-title" type="text" placeholder="제목" disabled>
+					<span class="detail-title">제목입니다.</span>
+				</li>
+				<li class="detail-content-detail">
+					<textarea name="detail-textarea" id="de-textarea" cols="30" rows="10" placeholder="내용" disabled></textarea>
+					<span class="detail-textarea">내용입니다내용용용내용입니다내용용용내용입니다내용용용내용입니다내용용용내용입
+						니다내용용용내용입니다내용용용내용입니다내용용용내용입니다내용용용내용입니다내용용용내용입니다내용용용내용
+						입니다내용용용내용입니다내용용용
+					</span>
+				</li>
+			</ul>
+			<div class="buttons">
+				<button class="detail-change-button">수정</button>
+				<div class="buttons-confirm-cancel">
+					<button class="detail-confirm-button">확인</button>
+					<button class="detail-cancel-button">취소</button>
+				</div>
+			</div>
+			<span class="fas fa-times-circle detail-close"></span>
+		</article>
+	</div>
+	<section class="main">
+		<div class="main-box">
+			<h1 class="main-title">오늘 뭐했지?</h1>
+			<p class="main-description">찰나의 순간을 기록하고 싶은<span>모든 이들을 위하여</span></p>
+			<input class="main-input" type="text" placeholder="찾고싶은 날짜나 제목을 입력하세요">
+			<button class="main-submit">등록</button>
+		</div>
+		<div class="items-box">
+			<ul class="main-items">
+				<li class="li-item li-item1">
+					<img src="img/메인.png" alt="item이미지" class="img">
+					<span class="far fa-times-circle"></span>
+					<span class="li-date">Date : 04.01</span>
+					<span class="li-title">이히리어차차차이히리 오예오예 어차차 머리가 아푸다 흑흑</span>
+				</li>
+				<li class="li-item li-item2">
+					<img src="img/메인.png" alt="item이미지" class="img">
+					<span class="far fa-times-circle"></span>
+					<span class="li-date">Date : 03.31</span>
+					<span class="li-title">하루종일 공부한날.. 머리가 아푸다 흑흑</span>
+				</li>
+				<li class="li-item li-item3">
+					<img src="img/메인.png" alt="item이미지" class="img">
+					<span class="far fa-times-circle"></span>
+					<span class="li-date">Date : 03.31</span>
+					<span class="li-title">하루종일 공부한날.. 머리가 아푸다 흑흑</span>
+				</li>
+				<li class="li-item li-item3">
+					<img src="img/메인.png" alt="item이미지" class="img">
+					<span class="far fa-times-circle"></span>
+					<span class="li-date">Date : 03.31</span>
+					<span class="li-title">하루종일 공부한날.. 머리가 아푸다 흑흑</span>
+				</li>
+
+			</ul>
+		</div>
+	</section>
+	<section class="prc ">
+		<button class="prc-btn">back</button>
+	</section>
 
 </body>
+
 </html>
