@@ -98,7 +98,7 @@ body{
 
 /* 세부내용section */
 .detail{
-  /* display: none; */
+  display: none;
   width: 60%;
   margin: 0 auto;
   margin-top: 50px;
@@ -189,7 +189,7 @@ body{
   margin-top: 15px;
   display: inline-block;
   font-size: 1.4em;
-  /* display: none;  */
+  display: none; 
 }
 .fa-calendar-check{
   display: inline-block;
