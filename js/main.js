@@ -15,6 +15,7 @@ const $uploadAddButton = document.querySelector('.upload-add-button');
 const $uploadInputTitle = document.querySelector('.upload-input-title');
 const $uploadTextarea = document.querySelector('.upload-textarea');
 let todos = [];
+let todoDetail = [];
 // 렌더링
 const render = () => {
   $mainItems.innerHTML = todos.map(({id, title, date}) =>
@@ -26,9 +27,9 @@ const render = () => {
 </li>`
   )
 }
-const renderDetail = ({title, content, date, edited}) => {
+const renderDetail = ({title, date, edited, content})=> {
   $detailContent.innerHTML =
-  `<li class=ail-content-title">
+  `<li class="detail-content-title">
   <label for="de-title" class="a11y-hidden">제목</label>
   <input class="detail-input-title" type="text" placeholder="제목">
   <span class="detail-span-title">${title}</span>
@@ -41,7 +42,7 @@ const renderDetail = ({title, content, date, edited}) => {
     <textarea name="detail-textarea" class="detail-textarea" cols="30" rows="10" placeholder="내용"></textarea>
     <span class="detail-span-textarea">${content}</span>
   </li>`
-  )}
+}
 const getTodos = () => {
   todos = [
       {id: 4, title: "하루종일 공부한날.. 머리가 아푸다 흑흑", content: "내용4", date: "2021-04-06", edited: ""},
@@ -116,9 +117,8 @@ $mainItems.onclick = e => {
   if(e.target.classList.contains('img')){
       $detail.style.display='block';
       const item = e.target.parentNode.classList[1].slice(7)
-      let todoDetail = todos.filter(todo => todo.id == +item);
-      console.log(todoDetail)
-      renderDetail(todoDetail);
+      todoDetail = todos.filter(todo => todo.id === +item);
+      renderDetail(...todoDetail);
         scrollDetail();
   }
 }
@@ -136,4 +136,58 @@ $detailBtn.onclick = () => {
 // detail scroll button event
 document.onscroll = () => {
   $detailBtn.style.display = window.pageYOffset < 49 ? "none" : "inline-block";
+}
+
+const $detailChangeButton = document.querySelector('.detail-change-button');
+const $buttonsConfirmCancel = document.querySelector('.buttons-confirm-cancel');
+let $detailSpanTitle = null;
+let $detailSpandate = null;
+let $detailSpanTextarea = null;
+let $detailInputTitle = null;
+let $detailTextarea = null;
+
+$detailChangeButton.onclick = () => {
+  $detailSpanTitle = document.querySelector('.detail-span-title');
+  $detailSpanTitle.style.display = 'none';
+  $detailSpandate = document.querySelector('.detail-span-date');
+  $detailSpandate.style.display = 'none';
+  $detailSpanTextarea = document.querySelector('.detail-span-textarea');
+  $detailSpanTextarea.style.display = 'none';
+  $detailInputTitle = document.querySelector('.detail-input-title');
+  $detailInputTitle.style.display = 'inline-block';
+  $detailTextarea = document.querySelector('.detail-textarea');
+  $detailTextarea.style.display = 'inline-block';
+  $buttonsConfirmCancel.style.display = 'inline-block';
+  $detailChangeButton.style.display = 'none';
+}
+
+const modifyTodo = (title, content, edited) => {
+  todos = todos.map(todo => 
+    todo.id === +todoDetail[0].id ? {...todo, title, content, edited} : todo
+  );
+  todoDetail = todos.filter(todo => todo.id === +todoDetail[0].id);
+  renderDetail(...todoDetail)
+  render()
+}
+$buttonsConfirmCancel.onclick = (e) => {
+  $detailSpanTitle.style.display = 'inline-block';
+  $detailSpandate.style.display = 'inline-block';
+  $detailSpanTextarea.style.display = 'inline-block';
+  $detailInputTitle.style.display = 'none';
+  $detailTextarea.style.display = 'none';
+  $detailChangeButton.style.display = 'inline-block';
+  $buttonsConfirmCancel.style.display = 'none';
+
+  if (e.target.textContent === "확인") {
+    const modifiedTitle = $detailInputTitle.value;
+    const ModifiedContent = $detailTextarea.value;
+    let editedDate = new Date();
+    editedDate = editedDate.toISOString().slice(0, 10);
+    modifyTodo(modifiedTitle, ModifiedContent, editedDate);
+    document.querySelector('.detail-span-edited').style.display = "inline-block";
+    console.log(todos);
+  } else {
+    $detailInputTitle.value = "";
+    $detailTextarea.value = "";
+  }
 }
