@@ -59,7 +59,7 @@ body{
   font-size: 1.4em;
   font-weight: 100;
   color: rgb(15, 15, 15);
-  text-shadow: 2px 2px 2px rgb(146, 145, 145);  
+  /* text-shadow: 2px 2px 2px rgb(146, 145, 145);   */
 }
 .fa-paw{
   font-size: 1.2em;
@@ -110,20 +110,15 @@ body{
   text-align: center;
   padding: 20px;
   transition: all 300ms;
-
 }
-
 .detail-btn{
   background-color: transparent;
   border: none;  
   position: fixed;
   bottom: 40px;
-  /* left: 50%;
-  transform: translate3D(-50%,0,0); */
   height: 50px;
   cursor: pointer;
   outline: none;
-  
 }
 .fa-chevron-up{
   left: 50%;
@@ -157,7 +152,7 @@ body{
   width: 40vw;
   height: 400px;
 }
-/************ 스크롤 세부 모달창 ************/
+/************ 스크롤 세부창 ************/
 .detail-input-title {
   display: none;
   width: 100%;
@@ -292,8 +287,6 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
-/* transform: translateY(0%); */
-/* transition: all 2s; */
 }
 .main-box{
   position: absolute;
@@ -318,6 +311,7 @@ body{
   animation-duration: 1.6s;
   letter-spacing: 5px;
 }
+
 @keyframes titleAni{
   0%{
       opacity: 0; 
@@ -333,7 +327,7 @@ body{
   }
 }
 .main-input{
-  padding: 0;
+  padding: 0 10px;
   width: 60%;
   height: 60px;
   border:1px solid #ccc;
@@ -342,10 +336,11 @@ body{
 .main-submit{
   margin-left: 15px;
   height: 60px;
-  width: 60px;
-  border-radius: 50%;
+  width: 70px;
+  border-radius: 10px;
   border: none;
   transition: all 300ms;
+  background-color: rgb(160, 207, 253);
 }
 .main-submit:hover{
   transform: scale(1.1);
@@ -398,23 +393,24 @@ body{
 }
 .li-date,
 .li-title{
-  display: block;
   position: absolute;
   top: 0;
+  left: 0;
   margin-bottom: 20px;
   font-size: 1.6em;
   letter-spacing: 3px;
   line-height: 2;
   font-weight: 700;
   color: white;
+  width: 100%;
 }
 .li-date{
-  top: 25%;
-  left:50%;
-  transform: translateX(-50px);
+  top: 20%;
+  display: inline-block;
 }
 .li-title{
   top: 40%;
+  padding: 10px;
 }
 .li-item:hover .li-date,
 .li-item:hover .li-title{
@@ -469,4 +465,8 @@ input{
 .detail-img{
   width: 80%;
   }
+  .modal-upload{
+    width: 80%;
+  }
 }
+
