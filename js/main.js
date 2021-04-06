@@ -122,4 +122,7 @@ $detailBtn.onclick = () => {
     $detail.style.display='none';
   },1000)
 }
-
+// detail scroll button event
+document.onscroll = () => {
+  $detailBtn.style.display = window.pageYOffset < 49 ? "none" : "inline-block";
+}
