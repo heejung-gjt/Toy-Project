@@ -18,18 +18,23 @@ let todos = [];
 let todoDetail = [];
 // 렌더링
 const render = () => {
-  $mainItems.innerHTML = todos.map(({id, title, date}) =>
+  localStorage.setItem("key", JSON.stringify(todos));
+  todos = JSON.parse(localStorage.getItem("key"));
+  $mainItems.innerHTML = todos.map(({id, title, date, img}) =>
   `<li class="li-item li-item${id}">
-  <img src="img/메인.png" alt="item이미지" class="img">
+  <img src="${img}" alt="item이미지" class="img">
   <span class="far fa-times-circle item-close"></span>
   <span class="li-date">${date}</span>
   <span class="li-title">${title}</span>
 </li>`
-  )
+  ).join('');
 }
-const renderDetail = ({title, date, edited, content})=> {
+const renderDetail = ({title, date, edited, content, img})=> {
   $detailContent.innerHTML =
-  `<li class="detail-content-title">
+  `<li>
+  <img class="detail-img" src="${img}" alt="올린이미지">
+  </li>
+  <li class="detail-content-title">
   <label for="de-title" class="a11y-hidden">제목</label>
   <input class="detail-input-title" type="text" placeholder="제목">
   <span class="detail-span-title">${title}</span>
@@ -43,16 +48,25 @@ const renderDetail = ({title, date, edited, content})=> {
     <span class="detail-span-textarea">${content}</span>
   </li>`
   document.querySelector('.detail-span-edited').style.display = edited ? "inline-block" : "none";
-
 }
 const getTodos = () => {
-  todos = [
-      {id: 4, title: "머리가 아푸다 흑흑", content: "내용4", date: "2021-04-06", edited: ""},
-      {id: 3, title: "study.. 머리가 아푸다 흑흑", content: "내용2", date: "2021-04-05", edited: ""},
-      {id: 2, title: "hard.. 머리가 아푸다 흑흑", content: "내용3", date: "2021-04-04", edited: ""},
-      {id: 1, title: "okok 오예오예 어차차 머리가 아푸다 흑흑", content: "내용", date: "2021-04-03", edited: ""},
-  ];
-  render()
+  // todos = [
+  //     {id: 4, title: "머리가 아푸다 흑흑", content: "내용4", date: "2021-04-06", edited: ""},
+  //     {id: 3, title: "study.. 머리가 아푸다 흑흑", content: "내용2", date: "2021-04-05", edited: ""},
+  //     {id: 2, title: "hard.. 머리가 아푸다 흑흑", content: "내용3", date: "2021-04-04", edited: ""},
+  //     {id: 1, title: "okok 오예오예 어차차 머리가 아푸다 흑흑", content: "내용", date: "2021-04-03", edited: ""},
+  // ];
+  console.log(todos);
+  // if (!todos.length) return;
+  todos = JSON.parse(localStorage.getItem("key"));
+  console.log(todos);
+  if (todos === null) {
+    todos = [];
+    return
+  }
+  render();
+  // todos = JSON.parse(localStorage.getItem("key"));
+  // !todos ? todos = [] : render()
 }
 // getTodos
 document.addEventListener("DOMContentLoaded", getTodos);
@@ -65,6 +79,7 @@ const closeUploadModal = () => {
   $modalUploadLayer.style.display = 'none'
   $uploadInputTitle.value = '';
   $uploadTextarea.value = '';
+  $uploadPreviewImg.setAttribute("src", "");
 }
 $closeButton.onclick = () => {
   closeUploadModal()
@@ -73,13 +88,25 @@ $modalUploadLayer.onclick = (e) => {
   if (e.target !== $modalUploadLayer) return
   closeUploadModal()
 };
+const $uploadImgInput = document.querySelector('.upload-img-input');
+const $uploadPreviewImg = document.querySelector('.upload-preview-img');
+let reader = '';
+$uploadImgInput.onchange = (e) => {
+  const imgFile = e.target.files[0];
+  reader = new FileReader();
+  reader.onload = () => {
+    $uploadPreviewImg.setAttribute("src", reader.result);
+  }
+  reader.readAsDataURL(imgFile);
+}
 // add
-const addTodo = (title, content, date) => {
+const addTodo = (title, content, date, img) => {
   const todo = {
       id: Math.max(...todos.map(todo => todo.id), 0) + 1,
       title,
       content,
-      date
+      date,
+      img
   };
   todos = [todo, ...todos];
   render();
@@ -93,8 +120,9 @@ $uploadAddButton.onclick = () => {
   const content = $uploadTextarea.value;
   let date = new Date();
   date = date.toISOString().slice(0, 10);
+  const img = reader.result
   closeUploadModal();
-  addTodo(title, content, date);
+  addTodo(title, content, date, img);
 };
 // x버튼 클릭 시 item 삭제
 const deleteItem = (item) => {
@@ -109,7 +137,6 @@ const scrollDetail = () => {
         setTimeout(function(){
             $main.style.display='none';
             $detailBtn.style.opacity='1';
-            // $detailBtn.style.opacity='0';
         },1000)
 }
 $mainItems.onclick = e => {
@@ -123,6 +150,9 @@ $mainItems.onclick = e => {
       todoDetail = todos.filter(todo => todo.id === +item);
       renderDetail(...todoDetail);
         scrollDetail();
+        console.log($detail.offsetHeight)
+        console.log(window.outerHeight)
+        console.log(window.offsetHeight)
   }
 }
 $detailBtn.onclick = () => {
@@ -136,18 +166,24 @@ $detailBtn.onclick = () => {
     $detail.style.display='none';
   },1000)
 }
+// $detailBtn.style =  window.pageYOffset < 49 ? 'none' :'inline-block';
+
 // detail scroll button event
 document.onscroll = () => {
-  $detailBtn.style.display = window.pageYOffset < 49 ? "none" : "inline-block";
+  // $detailBtn.style.display = window.pageYOffset < 49 ? "none" : "inline-block";
+  $detailBtn.style.display = window.pageYOffset < 49 ? 'none' : document.querySelector('.detail-span-title').style.display ==  'none' ? 'none' : 'inline-block';
+  
 }
-
 const $detailChangeButton = document.querySelector('.detail-change-button');
 const $buttonsConfirmCancel = document.querySelector('.buttons-confirm-cancel');
+const $detailConfirmButton = document.querySelector('.detail-confirm-button');
 let $detailSpanTitle = null;
 let $detailSpandate = null;
 let $detailSpanTextarea = null;
 let $detailInputTitle = null;
 let $detailTextarea = null;
+
+
 
 $detailChangeButton.onclick = () => {
   $detailSpanTitle = document.querySelector('.detail-span-title');
@@ -163,11 +199,16 @@ $detailChangeButton.onclick = () => {
   $buttonsConfirmCancel.style.display = 'inline-block';
   $detailChangeButton.style.display = 'none';
   document.querySelector('.detail-span-edited').style.display = 'none';
-  
-}
+// 수정버튼 클릭시 기존의 내용 기본값으로 추가
+  $detailInputTitle.value = $detailSpanTitle.textContent;
+  $detailTextarea.value = $detailSpanTextarea.textContent;
+// 수정버튼 클릭시 ^아이콘 삭제 
+  // $detailBtn.style.display='none'
 
+
+}
 const modifyTodo = (title, content, edited) => {
-  todos = todos.map(todo => 
+  todos = todos.map(todo =>
     todo.id === +todoDetail[0].id ? {...todo, title, content, edited} : todo
   );
   todoDetail = todos.filter(todo => todo.id === +todoDetail[0].id);
@@ -175,6 +216,7 @@ const modifyTodo = (title, content, edited) => {
   render()
 }
 $buttonsConfirmCancel.onclick = (e) => {
+  $detailBtn.style.display='inline-block';
   $detailSpanTitle.style.display = 'inline-block';
   $detailSpandate.style.display = 'inline-block';
   $detailSpanTextarea.style.display = 'inline-block';
@@ -184,6 +226,12 @@ $buttonsConfirmCancel.onclick = (e) => {
   $buttonsConfirmCancel.style.display = 'none';
 
   if (e.target.textContent === "확인") {
+    if(!$detailInputTitle.value || !$detailTextarea.value){
+      $detailChangeButton.click();
+      $detailBtn.style.display='none';
+      alert('제목과 내용을 작성해주세요');
+      return
+    }
     const modifiedTitle = $detailInputTitle.value;
     const ModifiedContent = $detailTextarea.value;
     let editedDate = new Date();
@@ -195,10 +243,10 @@ $buttonsConfirmCancel.onclick = (e) => {
   }
 }
 
+
 // 서치 동적 기능
 const $mainInput = document.querySelector('.main-input');
 const item = document.getElementsByClassName('li-item');
-
 $mainInput.oninput = () => {
   for(i =0; i<item.length; i++){
     names = item[i].getElementsByClassName("li-title");
@@ -212,6 +260,7 @@ $mainInput.oninput = () => {
   }
 }
 
-
-
-
+// 모달창 + 이미지 선택시 이미지 업로드 기능
+$uploadPreviewImg.onclick = () => {
+  $uploadImgInput.click();
+}
