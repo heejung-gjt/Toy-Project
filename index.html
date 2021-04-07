@@ -6,24 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/453205446a.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js"defer></script>
+    <script src="js/main.js" defer></script>
     <title>Document</title>
 </head>
 <body>
+    <!-- 등록 모달창 -->
+    <div class="modal-upload-layer">
+        <article class="modal-upload">
+            <h2 class="upload-title a11y-hidden">등록 모달창</h2>
+            <p class="upload-description"><span class="fa fa-paw"></span>당신의 하루는 어땠나요 ?</p>
+            <ul class="upload-content">
+                <li class="upload-img">
+                    <input type="file" class="upload-img-input">
+                    <img  src="#" alt="이미지 미리보기" class="upload-preview-img" onerror="this.src='img/img5.png'">
+                </li>
+                <li class="upload-content-title">
+                    <input class="upload-input-title" type="text" placeholder="제목">
+                </li>
+                <li class="upload-content-detail">
+                    <textarea name="upload-textarea" class="upload-textarea" cols="30" rows="10"
+                        placeholder="내용"></textarea>
+                </li>
+            </ul>
+            <button utton class="upload-add-button">등록</button>
+            <span class="fas fa-times-circle upload-close"></span>
+        </article>
+    </div>
+    <!-- 메인 화면 -->
     <section class="main">
         <div class="main-box">
             <h1 class="main-title">오늘 뭐했지?</h1>
             <p class="main-description">찰나의 순간을 기록하고 싶은<span>모든 이들을 위하여</span></p>
-            <input class="main-input" type="text"placeholder="찾고싶은 날짜나 제목을 입력하세요">
+            <input class="main-input" type="text" placeholder="찾고싶은 날짜나 제목을 입력하세요">
             <button class="main-submit">등록</button>
         </div>
         <div class="items-box">
-           <ul class="main-items">
-                <li class="li-item li-item1">
+            <ul class="main-items">
+                <!-- <li class="li-item li-item1">
                     <img src="img/메인.png" alt="item이미지" class="img">
-                    <span class="far fa-times-circle"></span>
+                    <span class="far fa-times-circle circle"></span>
                     <span class="li-date">Date : 04.01</span>
                     <span class="li-title">이히리어차차차이히리 오예오예 어차차 머리가 아푸다 흑흑</span>
                 </li>
@@ -44,14 +67,42 @@
                     <span class="far fa-times-circle"></span>
                     <span class="li-date">Date : 03.31</span>
                     <span class="li-title">하루종일 공부한날.. 머리가 아푸다 흑흑</span>
-                </li>
-         
+                </li> -->
             </ul>
         </div>
     </section>
-    <section class="prc ">
-        <button class="prc-btn">back</button>
+    <!-- 세부내용 화면 -->
+    <section class="detail">
+        <h2 class="detail-title a11y-hidden">세부내용</h2>
+        <ul class="detail-content">
+            <!-- <li class=ail-content-title">
+                <label for="de-title" class="a11y-hidden">제목</label>
+                <input class="detail-input-title" type="text" placeholder="제목" disabled>
+                <span class="detail-span-title">FE 는 어렵네요 어려워</span>
+                <span class="detail-span-date"><span class="far fa-calendar"></span>posted
+                    on<span class="date-underline">2020-04-05</span></span><span class="detail-span-edited"><span
+                        class="far fa-calendar-check"></span>Edited on<span
+                        class="date-underline">2021-04-06</span></span>
+            </li>
+            <li class="detail-content-detail">
+                <textarea name="detail-textarea" class="detail-textarea" cols="30" rows="10" placeholder="내용"
+                    disabled></textarea>
+                <span class="detail-span-textarea">내용입니다내용용용내용입니다내용용용내용입니다내용용용내용입니다내용용용내용입
+                    니다내용용용내용입니다내용용용내용입니다내용용용내용입니다내용용용내용입니다내용용용내용입니다내용용용내용
+                    입니다내용용용내용입니다내용용용니다내용용용내용입니다내용용용내용입니다내용용용내용입니다내용용용내용입니다내용용용내용입니다내용용용내용
+                    입니다내용용용내용입니다내용용용
+                </span>
+            </li> -->
+        </ul>
+        <button class="detail-btn"><span class="fas fa-chevron-up"></span><span
+                class="fas fa-chevron-up"></span></button>
+        <div class="buttons">
+            <button class="detail-change-button">수정</button>
+            <div class="buttons-confirm-cancel">
+                <button class="detail-confirm-button">확인</button>
+                <button class="detail-cancel-button">취소</button>
+            </div>
+        </div>
     </section>
-
 </body>
 </html>
