@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +12,8 @@
     <script src="js/main.js" defer></script>
     <title>Document</title>
 </head>
+
 <body>
-    
     <!-- 등록 모달창 -->
     <div class="modal-upload-layer">
         <article class="modal-upload">
@@ -21,7 +22,7 @@
             <ul class="upload-content">
                 <li class="upload-img">
                     <input type="file" class="upload-img-input">
-                    <img  src="#" alt="이미지 미리보기" class="upload-preview-img" onerror="this.src='img/img5.png'">
+                    <img src="#" alt="이미지 미리보기" class="upload-preview-img" onerror="this.src='img/img5.png'">
                 </li>
                 <li class="upload-content-title">
                     <input class="upload-input-title" type="text" placeholder="제목">
@@ -31,7 +32,7 @@
                         placeholder="내용"></textarea>
                 </li>
             </ul>
-            <button utton class="upload-add-button">등록</button>
+            <button class="upload-add-button">등록</button>
             <span class="fas fa-times-circle upload-close"></span>
         </article>
     </div>
@@ -45,7 +46,6 @@
         </div>
         <div class="items-box">
             <ul class="main-items">
-               
             </ul>
         </div>
     </section>
@@ -53,17 +53,17 @@
     <section class="detail">
         <h2 class="detail-title a11y-hidden">세부내용</h2>
         <ul class="detail-content">
-           
         </ul>
         <button class="detail-btn"><span class="fas fa-chevron-up"></span><span
                 class="fas fa-chevron-up"></span></button>
         <div class="buttons">
-            <button class="detail-change-button">수정</button>
-            <div class="buttons-confirm-cancel">
+            <button class="toggle detail-change-button">수정</button>
+            <div class="toggle buttons-confirm-cancel">
                 <button class="detail-confirm-button">확인</button>
                 <button class="detail-cancel-button">취소</button>
             </div>
         </div>
     </section>
 </body>
+
 </html>
