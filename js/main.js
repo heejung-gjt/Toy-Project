@@ -91,6 +91,7 @@ const closeUploadModal = () => {
   $uploadInputTitle.value = '';
   $uploadTextarea.value = '';
   $uploadPreviewImg.setAttribute("src", "");
+  reader = '';
 }
 $closeButton.onclick = () => {
   closeUploadModal()
@@ -135,6 +136,7 @@ $uploadAddButton.onclick = () => {
   const img = reader.result
   closeUploadModal();
   addTodo(title, content, date, img);
+  reader = "";
 };
 // x버튼 클릭 시 item 삭제
 const deleteItem = (item) => {
