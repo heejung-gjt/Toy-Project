@@ -165,6 +165,12 @@ $mainItems.onclick = e => {
         scrollDetail();
   }
 }
+
+
+
+console.log('hahahahahahaha');
+
+
 $detailBtn.onclick = () => {
   $detailBtn.style.opacity='0';
   $main.style.display='flex';
