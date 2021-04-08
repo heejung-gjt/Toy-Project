@@ -53,13 +53,11 @@ body{
   border-radius: 20px;
 }
 .upload-description{
-  float:left;
-  margin: 30px 0;
+  margin:20px;
   letter-spacing:5px;
   font-size: 1.4em;
   font-weight: 100;
   color: rgb(15, 15, 15);
-  /* text-shadow: 2px 2px 2px rgb(146, 145, 145);   */
 }
 .fa-paw{
   font-size: 1.2em;
@@ -67,23 +65,37 @@ body{
   color:black;
 }
 .upload-img{
+  margin-bottom: 20px;
+  height: 40vh;
   display: flex;
+  position: relative;
+}
+.upload-img-input{
+  width: 100%;
+  z-index: -1;
 }
 .upload-preview-img{
-  width: 40%;
-  height: 300px;
+  position: absolute;
+  width: 100%;
+  border: 2px dashed black;
+  background-color: rgb(225, 229, 233);
+  border-radius: 10px;
+  height: inherit;
+  object-fit:cover;
+  cursor: pointer;
 }
 .upload-input-title {
   width: 100%;
   margin-bottom: 20px;
-  padding: 15px 10px;
+  /* padding: 15px 10px; */
+  height: 5vh;
   border-radius: 5px;
   border: none;
   background-color: rgb(243, 240, 240);
 }
 .upload-textarea {
   width: 100%;
-  height: 280px;
+  height: 30vh;
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -93,7 +105,9 @@ body{
 .upload-add-button {
   float: right;
   border: none;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
+  height: 5vh;
+  width: 80px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 300ms;
@@ -102,7 +116,6 @@ body{
   background-color: rgba(30, 143, 255, 0.781);
   color: #fff;
 }
-
 /* 세부내용section */
 .detail{
   display: none;
@@ -120,7 +133,7 @@ body{
 }
 .detail-btn{
   background-color: transparent;
-  border: none;  
+  border: none;
   position: fixed;
   bottom: 40px;
   height: 50px;
@@ -135,7 +148,6 @@ body{
   position: absolute;
   animation: glow 3s infinite;
 }
-
 @keyframes glow{
   0%{
     opacity: 1;
@@ -144,7 +156,6 @@ body{
     opacity: 0.3;
     transform: translate3d(-50%,15px,0);
   }
-  
 }
 .fa-chevron-up:first-child{
   top: 10px;
@@ -157,7 +168,8 @@ body{
   margin:50px 0;
   border-radius: 10px;
   width: 40vw;
-  height: 400px;
+  height: 500px;
+  object-fit:cover;
 }
 /************ 스크롤 세부창 ************/
 .detail-input-title {
@@ -171,18 +183,13 @@ body{
 }
 .detail-span-title {
   /* display: block; */
-  /* display: none; */
   margin: 50px 0 0 0;
   font-size: 3.0em;
   font-weight: 600;
   letter-spacing: 5px;
 }
-.detail-date{
-  /* display: none; */
-}
 .detail-span-date{
   /* display: inline-block; */
-  /* display: none; */
   margin-top: 15px;
   font-size: 1.4em;
   padding: 0 10px;
@@ -192,11 +199,11 @@ body{
   margin-right: 5px;
 }
 .detail-span-edited{
-  /* display: none;  */
+  /* display: inline-block; */
   margin-left: 15px;
   margin-top: 15px;
-  /* display: inline-block; */
   font-size: 1.4em;
+  display: none;
 }
 .fa-calendar-check{
   /* display: inline-block; */
@@ -220,7 +227,6 @@ body{
 }
 .detail-span-textarea {
   /* display: inline-block; */
-  /* display: none; */
   text-align: left;
   margin: 100px 0 100px 0;
   width: 80%;
@@ -232,13 +238,11 @@ body{
   display: flex;
   justify-content: flex-end;
 }
-
 .upload-add-button:hover{
   background-color: rgba(30, 143, 255, 0.781);
   color: #fff;
 }
 .detail-change-button {
-  /* display: none; */
   float: right;
   border: none;
   padding: 10px 20px;
@@ -252,10 +256,9 @@ body{
   background-color: rgba(30, 143, 255, 0.781);
   color: #fff;
 }
-
-.buttons-confirm-cancel {
-  /* display: none; */
-}
+/* .buttons-confirm-cancel {
+  display: none;
+} */
 .detail-confirm-button{
   float: right;
   border: none;
@@ -274,7 +277,6 @@ body{
   cursor: pointer;
   transition: all 300ms;
 }
-
 /* html, js에 존재하지 않는 클래스 */
 .detail-close{
   position: absolute;
@@ -283,9 +285,6 @@ body{
   font-size: 2.2em;
   cursor: pointer;
 }
-
-
-
 .upload-close{
   position: absolute;
   top: 10px;
@@ -293,7 +292,6 @@ body{
   font-size: 2.2em;
   cursor: pointer;
 }
-
 .main{
   position: relative;
   background-color: rgb(248, 248, 248);
@@ -330,18 +328,17 @@ body{
   animation-duration: 1.6s;
   letter-spacing: 5px;
 }
-
 @keyframes titleAni{
   0%{
-      opacity: 0; 
+      opacity: 0;
       letter-spacing:-5px;
   }
   20%{
-      opacity: 0; 
+      opacity: 0;
       letter-spacing:-5px;
   }
   100%{
-      opacity: 1; 
+      opacity: 1;
       letter-spacing:5px;
   }
 }
@@ -389,7 +386,7 @@ body{
   box-shadow: 0px 0px 10px 0px #ccc;
   transition: all 300ms;
   transform: scale(0.9);
-  background-color: rgba(0,0,0, 0.7); 
+  background-color: rgba(0,0,0, 0.7);
   z-index: 1;
 }
 .li-item:hover{
@@ -462,7 +459,7 @@ input{
   margin: 0 auto;
   display: block;
   width: 100%;
-  } 
+  }
 .main-submit{
   margin-top: 15px;
   width: 15%;
@@ -477,7 +474,7 @@ input{
 }
 .detail{
   width: 100%;
-  margin: 50px 0; 
+  margin: 50px 0;
   box-shadow: none;
   display: none;
 }
@@ -486,6 +483,6 @@ input{
   }
   .modal-upload{
     width: 80%;
+    height: 100vh;
   }
 }
-
