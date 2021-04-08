@@ -99,6 +99,7 @@ $modalUploadLayer.onclick = (e) => {
   if (e.target !== $modalUploadLayer) return
   closeUploadModal()
 };
+// 이미지 업로드 기능
 const $uploadImgInput = document.querySelector('.upload-img-input');
 const $uploadPreviewImg = document.querySelector('.upload-preview-img');
 let reader = '';
@@ -123,8 +124,8 @@ const addTodo = (title, content, date, img) => {
   render();
 };
 $uploadAddButton.onclick = () => {
-  if (!$uploadInputTitle.value || !$uploadTextarea.value) {
-      alert('제목과 내용을 모두 입력해주세요.')
+  if (!$uploadInputTitle.value || !$uploadTextarea.value || !reader.result) {
+      alert('제목과 내용, 이미지 모두 입력해주세요.')
       return
   }
   const title = $uploadInputTitle.value;
