@@ -155,6 +155,12 @@ $mainItems.onclick = e => {
         console.log(window.offsetHeight)
   }
 }
+
+
+
+console.log('hahahahahahaha');
+
+
 $detailBtn.onclick = () => {
   $detailBtn.style.opacity='0';
   $main.style.display='flex';
