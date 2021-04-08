@@ -91,6 +91,7 @@ const closeUploadModal = () => {
   $uploadInputTitle.value = '';
   $uploadTextarea.value = '';
   $uploadPreviewImg.setAttribute("src", "");
+  reader = '';
 }
 $closeButton.onclick = () => {
   closeUploadModal()
