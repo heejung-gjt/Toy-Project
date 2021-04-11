@@ -235,18 +235,17 @@ $detailCancelButton.onclick = () => {
 }
 // 서치 동적 기능
 const $mainInput = document.querySelector('.main-input');
-const $liItem = document.getElementsByClassName('li-item');
 $mainInput.oninput = () => {
-  for(i =0; i<$liItem.length; i++){
-    names = $liItem[i].getElementsByClassName("li-title");
-    dates = $liItem[i].getElementsByClassName("li-date");
-    if(names[0].innerHTML.indexOf($mainInput.value) > -1 || dates[0].innerHTML.indexOf($mainInput.value) > -1){
-      $liItem[i].style.display='block';
+  const $liItems = document.querySelectorAll('.li-item');
+  $liItems.forEach(liItem => {
+    let name = liItem.querySelector(".li-title");
+    let calender = liItem.querySelector(".li-date");
+    if (name.innerHTML.indexOf($mainInput.value) > -1 || calender.innerHTML.indexOf($mainInput.value) > -1) {
+      liItem.style.display = 'block';
+    } else{
+      liItem.style.display = 'none';
     }
-    else{
-        $liItem[i].style.display='none';
-    }
-  }
+  })
 }
 // 모달창 + 이미지 선택시 이미지 업로드 기능
 $uploadPreviewImg.onclick = () => {
