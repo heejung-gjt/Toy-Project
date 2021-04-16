@@ -1,4 +1,4 @@
-# Daily Photo Diary Blog -v01
+# Daily Photo Diary Blog:
 
 ## '오늘뭐했니'란
 하루동안 있었던 특별하거나 사소한 무언가를 기록하라는 의미로 오늘 뭐했니로 정하게 되었다.
