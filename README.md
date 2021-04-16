@@ -26,8 +26,14 @@
 
 
 
+
 ## 시연영상
-...
+![수정기능 (1)](https://user-images.githubusercontent.com/64240637/114993458-cfb70480-9ed6-11eb-8369-fe26525bd70c.gif)
+<br>
+![서치기능](https://user-images.githubusercontent.com/64240637/114993439-c9c12380-9ed6-11eb-992b-229bdee7e200.gif)
+<br>
+![Google-Chrome-2021-04-08-21-10-55_Trim-_3_](https://user-images.githubusercontent.com/64240637/114994261-8fa45180-9ed7-11eb-979a-9713e94c0e16.gif)
+
 
 ## 참여자   
 - [김주형 - JuHyeong-K](https://github.com/JuHyeong-K)
