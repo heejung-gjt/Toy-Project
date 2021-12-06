@@ -1,10 +1,19 @@
 # Daily Photo Diary Blog:
 
 ## '오늘뭐했니'란
-하루동안 있었던 특별하거나 사소한 무언가를 기록하라는 의미로 오늘 뭐했니로 정하게 되었다.
+하루동안 있었던 특별하거나 사소한 무언가를 사진과 함께 기록하라는 의미로 오늘 뭐했니로 정하게 되었다.
 
 ## 기획의도
-...
+기존에 학습했던 바닐라 자바스크립트를 응용해 사용자가 입력한 데이터(글과 이미지)를 저장하여 기록할 수 있도록 구현하고 싶었다. 
+
+## 소개   
+
+[참여자]    
+- [김주형 - JuHyeong-K](https://github.com/JuHyeong-K)
+- [손희정 - heejung-gjt](https://github.com/heejung-gjt)
+ 
+[개발기간]    
+- 21.04.05 ~ 21.04.16
 
 ## 개발환경
 - IDE : Visual Studio Code   
@@ -34,7 +43,3 @@
 <br>
 ![Google-Chrome-2021-04-08-21-10-55_Trim-_3_](https://user-images.githubusercontent.com/64240637/114994261-8fa45180-9ed7-11eb-979a-9713e94c0e16.gif)
 
-
-## 참여자   
-- [김주형 - JuHyeong-K](https://github.com/JuHyeong-K)
-- [손희정 - heejung-gjt](https://github.com/heejung-gjt)
